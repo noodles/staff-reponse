@@ -80,7 +80,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, watch } from 'vue'
 
 console.log('ResponseForm component loaded')
 
@@ -162,18 +162,18 @@ const retry = () => {
   responseStatus.value = ''
 }
 
-// Load staff info on mount
-onMounted(async () => {
-  if (!props.shortcode) {
-    console.error('No shortcode provided')
+// Load staff info when shortcode becomes available
+const loadStaffInfo = async (shortcode) => {
+  if (!shortcode) {
+    console.log('No shortcode yet, waiting...')
     return
   }
   
-  console.log('Loading staff info for shortcode:', props.shortcode)
+  console.log('Loading staff info for shortcode:', shortcode)
   console.log('API base URL:', baseUrl)
   
   try {
-    const apiUrl = `${baseUrl}/api/response/${props.shortcode}`
+    const apiUrl = `${baseUrl}/api/response/${shortcode}`
     console.log('Making API call to:', apiUrl)
     
     const response = await fetch(apiUrl)
@@ -205,7 +205,13 @@ onMounted(async () => {
     console.error('Error loading staff info:', err)
     error.value = 'Failed to load staff information'
   }
-})
+}
+
+// Watch for shortcode changes
+watch(() => props.shortcode, (newShortcode) => {
+  console.log('Shortcode changed to:', newShortcode)
+  loadStaffInfo(newShortcode)
+}, { immediate: true })
 </script>
 
 <style scoped>
