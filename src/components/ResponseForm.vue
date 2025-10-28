@@ -94,8 +94,8 @@ const submitted = ref(false)
 const error = ref('')
 const responseStatus = ref('')
 
-// API base URL - should match your backend
-const baseUrl = 'https://navigation-puerto-respectively-loading.trycloudflare.com'
+// API base URL - loaded from environment variable
+const baseUrl = import.meta.env.VITE_API_BASE_URL || 'https://condition-grades-distinguished-dictionaries.trycloudflare.com'
 
 // Methods
 const getStatusText = (status) => {

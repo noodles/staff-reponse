@@ -21,7 +21,7 @@ A Vue.js web application that allows staff members to respond to SMS messages ab
 The web app accepts staff information via URL parameters:
 
 ```
-https://your-app.netlify.app/?id=staff123&name=John%20Smith&phone=%2B61400123456
+https://staff-response.netlify.app/?id=staff123&name=John%20Smith&phone=%2B61400123456
 ```
 
 **Parameters:**
@@ -33,13 +33,13 @@ https://your-app.netlify.app/?id=staff123&name=John%20Smith&phone=%2B61400123456
 
 ```bash
 # John Smith responding
-https://your-app.netlify.app/?id=abc123&name=John%20Smith&phone=%2B61400123456
+https://staff-response.netlify.app/?id=abc123&name=John%20Smith&phone=%2B61400123456
 
 # Sarah Johnson responding  
-https://your-app.netlify.app/?id=def456&name=Sarah%20Johnson&phone=%2B61400123457
+https://staff-response.netlify.app/?id=def456&name=Sarah%20Johnson&phone=%2B61400123457
 
 # Mike Davis responding
-https://your-app.netlify.app/?id=ghi789&name=Mike%20Davis&phone=%2B61400123458
+https://staff-response.netlify.app/?id=ghi789&name=Mike%20Davis&phone=%2B61400123458
 ```
 
 ## Development
@@ -49,25 +49,44 @@ https://your-app.netlify.app/?id=ghi789&name=Mike%20Davis&phone=%2B61400123458
 - Node.js 20.19.0 or higher
 - pnpm (preferred) or npm
 
+### Environment Variables
+
+Create a `.env` file in the project root with the following variables:
+
+```bash
+# API Configuration
+VITE_API_BASE_URL=https://your-backend-url.trycloudflare.com
+```
+
+**Note**: In Vite, environment variables must be prefixed with `VITE_` to be accessible in the frontend code.
+
+You can copy `.env.example` to `.env` and update the values as needed.
+
 ### Setup
 
 1. **Install dependencies**:
    ```bash
-   cd staff-reponse
+   cd staff-response
    pnpm install
    ```
 
-2. **Start development server**:
+2. **Set up environment variables**:
+   ```bash
+   cp .env.example .env
+   # Edit .env and update VITE_API_BASE_URL with your backend URL
+   ```
+
+3. **Start development server**:
    ```bash
    pnpm dev
    ```
 
-3. **Build for production**:
+4. **Build for production**:
    ```bash
    pnpm build
    ```
 
-4. **Preview production build**:
+5. **Preview production build**:
    ```bash
    pnpm preview
    ```
@@ -145,7 +164,7 @@ const baseUrl = 'https://your-backend-url.com'
 When sending SMS messages, include the response URL:
 
 ```javascript
-const message = `Are you coming to work today? Please respond: https://your-app.netlify.app/?id=${staffId}&name=${encodeURIComponent(staffName)}&phone=${encodeURIComponent(phoneNumber)}`
+const message = `Are you coming to work today? Please respond: https://staff-response.netlify.app/?id=${staffId}&name=${encodeURIComponent(staffName)}&phone=${encodeURIComponent(phoneNumber)}`
 ```
 
 ### Backend SMS Route Example
@@ -156,7 +175,7 @@ app.post('/api/sms', async (req, res) => {
   const { phoneNumber, message, staffId, staffName } = req.body
   
   // Generate unique response URL
-  const responseUrl = `https://your-app.netlify.app/?id=${staffId}&name=${encodeURIComponent(staffName)}&phone=${encodeURIComponent(phoneNumber)}`
+  const responseUrl = `https://staff-response.netlify.app/?id=${staffId}&name=${encodeURIComponent(staffName)}&phone=${encodeURIComponent(phoneNumber)}`
   
   const fullMessage = `${message}\n\nRespond here: ${responseUrl}`
   
