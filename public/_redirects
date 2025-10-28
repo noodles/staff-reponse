@@ -1,0 +1,7 @@
+# Netlify redirects for shortcode URLs
+# Redirect all shortcode paths (6-character alphanumeric) to the main app
+/[a-z0-9]{6}    /index.html   200
+/[a-z0-9]{6}/*  /index.html   200
+
+# Fallback for any other paths
+/*              /index.html   200
