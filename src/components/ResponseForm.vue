@@ -1,76 +1,78 @@
 <template>
   <div class="response-form">
-    <div class="header">
-      <div class="branding">
-        <span class="noodle-emoji">🍜</span>
-        <h1>Noodle Palace</h1>
-      </div>
-      <p class="subtitle">Please let us know your availability for today</p>
-    </div>
-
-    <div v-if="loading" class="loading">
-      <div class="spinner"></div>
-      <p>Submitting your response...</p>
-    </div>
-
-    <div v-else-if="submitted" class="success">
-      <div class="success-icon">✅</div>
-      <h2>Thank you!</h2>
-      <p>Your response has been recorded successfully.</p>
-      <p class="response-summary">
-        <strong>{{ staffName }}</strong> - {{ getStatusText(responseStatus) }}
-      </p>
-    </div>
-
-    <div v-else-if="error" class="error">
-      <div class="error-icon">❌</div>
-      <h2>Error</h2>
-      <p>{{ error }}</p>
-      <button @click="retry" class="retry-btn">Try Again</button>
-    </div>
-
-    <div v-else-if="!shortcode" class="error">
-      <div class="error-icon">❌</div>
-      <h2>Invalid Link</h2>
-      <p>This response link is invalid or has expired.</p>
-    </div>
-
-    <div v-else class="form-container">
-      <div class="staff-info">
-        <h2>{{ staffName }}</h2>
-        <p class="phone">{{ phoneNumber }}</p>
+    <div class="form-container">
+      <div class="header">
+        <div class="branding">
+          <span class="noodle-emoji">🍜</span>
+          <h1>Noodle Palace</h1>
+        </div>
+        <p class="subtitle">Please let us know your availability for today</p>
       </div>
 
-      <div class="response-options">
-        <h3>Are you coming to work today?</h3>
-        
-        <div class="options">
-          <button 
-            @click="submitResponse('y')"
-            class="option-btn on-time"
-            :disabled="loading"
-          >
-            <span class="icon">✅</span>
-            <span class="text">Yes, I'll be there on time</span>
-          </button>
+      <div v-if="loading" class="loading">
+        <div class="spinner"></div>
+        <p>Submitting your response...</p>
+      </div>
 
-          <button 
-            @click="submitResponse('l')"
-            class="option-btn late"
-            :disabled="loading"
-          >
-            <span class="icon">⚠️</span>
-            <span class="text">Yes but I am running late</span>
-          </button>
+      <div v-else-if="submitted" class="success">
+        <div class="success-icon">✅</div>
+        <h2>Thank you!</h2>
+        <p>Your response has been recorded successfully.</p>
+        <p class="response-summary">
+          <strong>{{ staffName }}</strong> - {{ getStatusText(responseStatus) }}
+        </p>
+      </div>
 
-          <button 
-            @click="submitResponse('n')"
-            class="option-btn not-coming"
-            :disabled="loading"
-          >
-            <span class="icon">❌</span>
-            <span class="text">Sorry, can't make it</span>
-          </button>
+      <div v-else-if="error" class="error">
+        <div class="error-icon">❌</div>
+        <h2>Error</h2>
+        <p>{{ error }}</p>
+        <button @click="retry" class="retry-btn">Try Again</button>
+      </div>
+
+      <div v-else-if="!shortcode" class="error">
+        <div class="error-icon">❌</div>
+        <h2>Invalid Link</h2>
+        <p class="error-text">This response link is invalid or has expired.</p>
+      </div>
+
+      <div v-else class="form-content">
+        <div class="staff-info">
+          <h2>{{ staffName }}</h2>
+          <p class="phone">{{ phoneNumber }}</p>
+        </div>
+
+        <div class="response-options">
+          <h3>Are you coming to work today?</h3>
+          
+          <div class="options">
+            <button 
+              @click="submitResponse('y')"
+              class="option-btn on-time"
+              :disabled="loading"
+            >
+              <span class="icon">✅</span>
+              <span class="text">Yes, I'll be there on time</span>
+            </button>
+
+            <button 
+              @click="submitResponse('l')"
+              class="option-btn late"
+              :disabled="loading"
+            >
+              <span class="icon">⚠️</span>
+              <span class="text">Yes but I am running late</span>
+            </button>
+
+            <button 
+              @click="submitResponse('n')"
+              class="option-btn not-coming"
+              :disabled="loading"
+            >
+              <span class="icon">❌</span>
+              <span class="text">Sorry, can't make it</span>
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -201,12 +203,33 @@ onMounted(async () => {
 <style scoped>
 .response-form {
   min-height: 100vh;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  width: 100%;
+  background: #00a86b;
+  background-image: 
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Ctext x='100' y='100' font-size='30' text-anchor='middle' dominant-baseline='middle'%3E🐉%3C/text%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Ctext x='100' y='100' font-size='30' text-anchor='middle' dominant-baseline='middle'%3E🍜%3C/text%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Ctext x='100' y='100' font-size='30' text-anchor='middle' dominant-baseline='middle'%3E🏮%3C/text%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Ctext x='100' y='100' font-size='30' text-anchor='middle' dominant-baseline='middle'%3E🥢%3C/text%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Ctext x='100' y='100' font-size='30' text-anchor='middle' dominant-baseline='middle'%3E🎋%3C/text%3E%3C/svg%3E");
+  background-size: 
+    200px 200px,
+    200px 200px,
+    200px 200px,
+    200px 200px,
+    200px 200px;
+  background-position: 
+    0 0,
+    100px 100px,
+    200px 0,
+    300px 100px,
+    400px 0;
+  background-repeat: repeat;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
-  padding: 20px;
+  padding: 40px 20px;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  box-sizing: border-box;
 }
 
 .header {
@@ -218,12 +241,13 @@ onMounted(async () => {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
+  gap: 15px;
   margin-bottom: 10px;
+  flex-wrap: nowrap;
 }
 
 .noodle-emoji {
-  font-size: 2rem;
+  font-size: 2.5rem;
   animation: wiggle 2s ease-in-out infinite;
 }
 
@@ -233,15 +257,16 @@ onMounted(async () => {
   75% { transform: rotate(5deg); }
 }
 
-h1 {
+.header h1 {
   color: #2c3e50;
-  font-size: 2.5rem;
-  font-weight: 700;
   margin: 0;
+  font-size: 2.2rem;
+  font-weight: 700;
+  white-space: nowrap;
 }
 
 .subtitle {
-  color: #7f8c8d;
+  color: #2c3e50;
   font-size: 1.1rem;
   margin: 0;
 }
@@ -253,31 +278,31 @@ h1 {
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
   max-width: 500px;
   width: 100%;
+  margin: 0 auto;
 }
 
 .staff-info {
-  text-align: center;
+  background: #f8f9fa;
+  padding: 20px;
+  border-radius: 8px;
   margin-bottom: 30px;
-  padding-bottom: 20px;
-  border-bottom: 2px solid #ecf0f1;
+  text-align: center;
 }
 
 .staff-info h2 {
+  margin: 0 0 10px 0;
   color: #2c3e50;
-  font-size: 1.8rem;
-  margin-bottom: 10px;
 }
 
 .phone {
   color: #7f8c8d;
-  font-size: 1rem;
+  margin: 0;
 }
 
 .response-options h3 {
-  color: #2c3e50;
-  font-size: 1.3rem;
-  margin-bottom: 25px;
   text-align: center;
+  margin-bottom: 30px;
+  color: #2c3e50;
 }
 
 .options {
@@ -289,64 +314,72 @@ h1 {
 .option-btn {
   display: flex;
   align-items: center;
-  gap: 15px;
   padding: 20px;
-  border: none;
-  border-radius: 15px;
-  font-size: 1.1rem;
-  font-weight: 600;
+  border: 2px solid transparent;
+  border-radius: 12px;
+  background: #fff;
   cursor: pointer;
   transition: all 0.3s ease;
-  text-align: left;
+  font-size: 1.1rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
-.option-btn:hover:not(:disabled) {
+.option-btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
 
 .option-btn:disabled {
   opacity: 0.6;
   cursor: not-allowed;
+  transform: none;
 }
 
 .option-btn.on-time {
-  background: linear-gradient(135deg, #4CAF50, #45a049);
+  border-color: #27ae60;
+}
+
+.option-btn.on-time:hover {
+  background: #27ae60;
   color: white;
 }
 
 .option-btn.late {
-  background: linear-gradient(135deg, #FF9800, #F57C00);
+  border-color: #f39c12;
+}
+
+.option-btn.late:hover {
+  background: #f39c12;
   color: white;
 }
 
 .option-btn.not-coming {
-  background: linear-gradient(135deg, #F44336, #D32F2F);
+  border-color: #e74c3c;
+}
+
+.option-btn.not-coming:hover {
+  background: #e74c3c;
   color: white;
 }
 
 .icon {
   font-size: 1.5rem;
+  margin-right: 15px;
 }
 
 .text {
-  flex: 1;
+  font-weight: 500;
 }
 
 .loading, .success, .error {
-  background: white;
-  border-radius: 20px;
-  padding: 40px;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-  max-width: 500px;
-  width: 100%;
   text-align: center;
+  padding: 20px 0;
 }
 
 .spinner {
   width: 40px;
   height: 40px;
-  border: 4px solid #ecf0f1;
+  border: 4px solid #f3f3f3;
   border-top: 4px solid #3498db;
   border-radius: 50%;
   animation: spin 1s linear infinite;
@@ -365,53 +398,89 @@ h1 {
 
 .success h2 {
   color: #27ae60;
-  font-size: 2rem;
   margin-bottom: 15px;
 }
 
 .error h2 {
   color: #e74c3c;
-  font-size: 2rem;
   margin-bottom: 15px;
+}
+
+.error-text {
+  color: #2c3e50;
+  margin: 0;
 }
 
 .response-summary {
   background: #f8f9fa;
   padding: 15px;
-  border-radius: 10px;
+  border-radius: 8px;
   margin-top: 20px;
-  font-size: 1.1rem;
   color: #2c3e50;
 }
 
 .retry-btn {
-  background: #3498db;
+  background: #dc2626;
   color: white;
   border: none;
-  padding: 12px 24px;
-  border-radius: 8px;
-  font-size: 1rem;
+  padding: 10px 20px;
+  border-radius: 6px;
   cursor: pointer;
-  margin-top: 20px;
-  transition: background 0.3s ease;
+  margin-top: 10px;
 }
 
 .retry-btn:hover {
-  background: #2980b9;
+  background: #b91c1c;
 }
 
-@media (max-width: 480px) {
+@media (max-width: 768px) {
+  .response-form {
+    padding: 20px;
+  }
+  
   .form-container, .loading, .success, .error {
     padding: 30px 20px;
   }
   
-  h1 {
+  .header h1 {
+    font-size: 2rem;
+  }
+  
+  .noodle-emoji {
+    font-size: 2.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .response-form {
+    padding: 15px;
+  }
+  
+  .form-container, .loading, .success, .error {
+    padding: 20px 15px;
+  }
+  
+  .branding {
+    gap: 10px;
+  }
+  
+  .header h1 {
+    font-size: 1.8rem;
+    white-space: nowrap;
+  }
+  
+  .noodle-emoji {
     font-size: 2rem;
   }
   
   .option-btn {
     padding: 15px;
     font-size: 1rem;
+  }
+  
+  .icon {
+    font-size: 1.2rem;
+    margin-right: 10px;
   }
 }
 </style>
