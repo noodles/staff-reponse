@@ -6,7 +6,7 @@
           <span class="noodle-emoji">🍜</span>
           <h1>Noodle Palace</h1>
         </div>
-        <p class="subtitle">Please let us know your availability for today</p>
+        <p class="subtitle">Staff availability for today</p>
       </div>
 
       <div v-if="loading" class="loading">
@@ -162,7 +162,10 @@ const retry = () => {
 
 // Load staff info on mount
 onMounted(async () => {
-  if (!props.shortcode) return
+  if (!props.shortcode) {
+    console.error('No shortcode provided')
+    return
+  }
   
   console.log('Loading staff info for shortcode:', props.shortcode)
   console.log('API base URL:', baseUrl)
@@ -187,6 +190,9 @@ onMounted(async () => {
         if (props.responseParam) {
           await submitResponse(props.responseParam)
         }
+      } else {
+        console.error('API returned success: false', data)
+        error.value = data.error || 'Failed to load staff information'
       }
     } else {
       console.error('API call failed with status:', response.status)
