@@ -82,6 +82,8 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 
+console.log('ResponseForm component loaded')
+
 // Props
 const props = defineProps({
   shortcode: {
