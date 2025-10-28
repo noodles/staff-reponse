@@ -82,8 +82,6 @@
 <script setup>
 import { ref, onMounted, watch } from 'vue'
 
-console.log('ResponseForm component loaded')
-
 // Props
 const props = defineProps({
   shortcode: {
@@ -165,51 +163,37 @@ const retry = () => {
 // Load staff info when shortcode becomes available
 const loadStaffInfo = async (shortcode) => {
   if (!shortcode) {
-    console.log('No shortcode yet, waiting...')
     return
   }
   
-  console.log('Loading staff info for shortcode:', shortcode)
-  console.log('API base URL:', baseUrl)
-  
   try {
     const apiUrl = `${baseUrl}/api/response/${shortcode}`
-    console.log('Making API call to:', apiUrl)
-    
     const response = await fetch(apiUrl)
-    console.log('API response status:', response.status)
     
     if (response.ok) {
       const data = await response.json()
-      console.log('API response data:', data)
       
       if (data.success) {
         staffName.value = data.data.staffName
         phoneNumber.value = data.data.phone
-        console.log('Updated staff name to:', staffName.value)
         
         // If there's a response param, auto-submit
         if (props.responseParam) {
           await submitResponse(props.responseParam)
         }
       } else {
-        console.error('API returned success: false', data)
         error.value = data.error || 'Failed to load staff information'
       }
     } else {
-      console.error('API call failed with status:', response.status)
-      const errorText = await response.text()
-      console.error('Error response:', errorText)
+      error.value = 'Failed to load staff information'
     }
   } catch (err) {
-    console.error('Error loading staff info:', err)
     error.value = 'Failed to load staff information'
   }
 }
 
 // Watch for shortcode changes
 watch(() => props.shortcode, (newShortcode) => {
-  console.log('Shortcode changed to:', newShortcode)
   loadStaffInfo(newShortcode)
 }, { immediate: true })
 </script>
