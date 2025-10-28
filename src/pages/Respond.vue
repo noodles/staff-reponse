@@ -1,5 +1,15 @@
+<template>
+  <div class="respond-page">
+    <ResponseForm 
+      :staff-id="staffId"
+      :staff-name="staffName"
+      :phone-number="phoneNumber"
+    />
+  </div>
+</template>
+
 <script setup>
-import ResponseForm from './components/ResponseForm.vue'
+import ResponseForm from '../components/ResponseForm.vue'
 import { ref, onMounted } from 'vue'
 
 // Extract staff information from URL parameters
@@ -15,30 +25,8 @@ onMounted(() => {
 })
 </script>
 
-<template>
-  <div id="app">
-    <ResponseForm 
-      :staff-id="staffId"
-      :staff-name="staffName"
-      :phone-number="phoneNumber"
-    />
-  </div>
-</template>
-
-<style>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  min-height: 100vh;
-}
-
-#app {
+<style scoped>
+.respond-page {
   min-height: 100vh;
   display: flex;
   align-items: center;
