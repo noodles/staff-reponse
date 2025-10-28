@@ -1,6 +1,6 @@
-# Staff Response Web App
+# Noodle Palace Staff Response Web App
 
-A Vue.js web application that allows staff members to respond to SMS messages about their work availability.
+A Vue.js web application that allows staff members to respond to SMS messages about their work availability for Noodle Palace.
 
 ## Features
 
