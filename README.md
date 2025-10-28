@@ -21,7 +21,7 @@ A Vue.js web application that allows staff members to respond to SMS messages ab
 The web app accepts staff information via URL parameters:
 
 ```
-https://staff-response.netlify.app/?id=staff123&name=John%20Smith&phone=%2B61400123456
+https://igo2.lol/?id=staff123&name=John%20Smith&phone=%2B61400123456
 ```
 
 **Parameters:**
@@ -33,13 +33,13 @@ https://staff-response.netlify.app/?id=staff123&name=John%20Smith&phone=%2B61400
 
 ```bash
 # John Smith responding
-https://staff-response.netlify.app/?id=abc123&name=John%20Smith&phone=%2B61400123456
+https://igo2.lol/?id=abc123&name=John%20Smith&phone=%2B61400123456
 
 # Sarah Johnson responding  
-https://staff-response.netlify.app/?id=def456&name=Sarah%20Johnson&phone=%2B61400123457
+https://igo2.lol/?id=def456&name=Sarah%20Johnson&phone=%2B61400123457
 
 # Mike Davis responding
-https://staff-response.netlify.app/?id=ghi789&name=Mike%20Davis&phone=%2B61400123458
+https://igo2.lol/?id=ghi789&name=Mike%20Davis&phone=%2B61400123458
 ```
 
 ## Development
@@ -164,7 +164,7 @@ const baseUrl = 'https://your-backend-url.com'
 When sending SMS messages, include the response URL:
 
 ```javascript
-const message = `Are you coming to work today? Please respond: https://staff-response.netlify.app/?id=${staffId}&name=${encodeURIComponent(staffName)}&phone=${encodeURIComponent(phoneNumber)}`
+const message = `Are you coming to work today? Please respond: https://igo2.lol/?id=${staffId}&name=${encodeURIComponent(staffName)}&phone=${encodeURIComponent(phoneNumber)}`
 ```
 
 ### Backend SMS Route Example
@@ -175,7 +175,7 @@ app.post('/api/sms', async (req, res) => {
   const { phoneNumber, message, staffId, staffName } = req.body
   
   // Generate unique response URL
-  const responseUrl = `https://staff-response.netlify.app/?id=${staffId}&name=${encodeURIComponent(staffName)}&phone=${encodeURIComponent(phoneNumber)}`
+  const responseUrl = `https://igo2.lol/?id=${staffId}&name=${encodeURIComponent(staffName)}&phone=${encodeURIComponent(phoneNumber)}`
   
   const fullMessage = `${message}\n\nRespond here: ${responseUrl}`
   

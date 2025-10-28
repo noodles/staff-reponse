@@ -2,25 +2,26 @@
 import ResponseForm from './components/ResponseForm.vue'
 import { ref, onMounted } from 'vue'
 
-// Extract staff information from URL parameters
-const staffId = ref('')
-const staffName = ref('Staff Member')
-const phoneNumber = ref('')
+// Extract shortcode from URL path and response from query params
+const shortcode = ref('')
+const responseParam = ref('')
 
 onMounted(() => {
+  // Get shortcode from URL path (e.g., /abc123)
+  const pathParts = window.location.pathname.split('/').filter(part => part)
+  shortcode.value = pathParts[0] || ''
+  
+  // Get response parameter from query string (e.g., ?y, ?l, ?n)
   const urlParams = new URLSearchParams(window.location.search)
-  staffId.value = urlParams.get('id') || 'default-id'
-  staffName.value = urlParams.get('name') || 'Staff Member'
-  phoneNumber.value = urlParams.get('phone') || ''
+  responseParam.value = urlParams.get('response') || ''
 })
 </script>
 
 <template>
   <div id="app">
     <ResponseForm 
-      :staff-id="staffId"
-      :staff-name="staffName"
-      :phone-number="phoneNumber"
+      :shortcode="shortcode"
+      :response-param="responseParam"
     />
   </div>
 </template>
