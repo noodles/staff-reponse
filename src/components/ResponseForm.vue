@@ -162,19 +162,34 @@ const retry = () => {
 onMounted(async () => {
   if (!props.shortcode) return
   
+  console.log('Loading staff info for shortcode:', props.shortcode)
+  console.log('API base URL:', baseUrl)
+  
   try {
-    const response = await fetch(`${baseUrl}/api/response/${props.shortcode}`)
+    const apiUrl = `${baseUrl}/api/response/${props.shortcode}`
+    console.log('Making API call to:', apiUrl)
+    
+    const response = await fetch(apiUrl)
+    console.log('API response status:', response.status)
+    
     if (response.ok) {
       const data = await response.json()
+      console.log('API response data:', data)
+      
       if (data.success) {
         staffName.value = data.data.staffName
         phoneNumber.value = data.data.phone
+        console.log('Updated staff name to:', staffName.value)
         
         // If there's a response param, auto-submit
         if (props.responseParam) {
           await submitResponse(props.responseParam)
         }
       }
+    } else {
+      console.error('API call failed with status:', response.status)
+      const errorText = await response.text()
+      console.error('Error response:', errorText)
     }
   } catch (err) {
     console.error('Error loading staff info:', err)
