@@ -204,25 +204,20 @@ onMounted(async () => {
 .response-form {
   min-height: 100vh;
   width: 100%;
-  background: #00a86b;
+  background: #1C735E;
   background-image: 
     url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Ctext x='100' y='100' font-size='30' text-anchor='middle' dominant-baseline='middle'%3E🐉%3C/text%3E%3C/svg%3E"),
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Ctext x='100' y='100' font-size='30' text-anchor='middle' dominant-baseline='middle'%3E🍜%3C/text%3E%3C/svg%3E"),
     url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Ctext x='100' y='100' font-size='30' text-anchor='middle' dominant-baseline='middle'%3E🏮%3C/text%3E%3C/svg%3E"),
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Ctext x='100' y='100' font-size='30' text-anchor='middle' dominant-baseline='middle'%3E🥢%3C/text%3E%3C/svg%3E"),
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Ctext x='100' y='100' font-size='30' text-anchor='middle' dominant-baseline='middle'%3E🎋%3C/text%3E%3C/svg%3E");
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Ctext x='100' y='100' font-size='30' text-anchor='middle' dominant-baseline='middle'%3E🥢%3C/text%3E%3C/svg%3E");
   background-size: 
-    200px 200px,
-    200px 200px,
-    200px 200px,
-    200px 200px,
-    200px 200px;
+    180px 180px,
+    180px 180px,
+    180px 180px;
   background-position: 
-    0 0,
-    100px 100px,
-    200px 0,
-    300px 100px,
-    400px 0;
+    0px 0px,
+    120px 60px,
+    240px 120px,
+    360px 60px;
   background-repeat: repeat;
   display: flex;
   align-items: flex-start;
@@ -453,7 +448,7 @@ onMounted(async () => {
 
 @media (max-width: 480px) {
   .response-form {
-    padding: 15px;
+    padding: 40px 40px;
   }
   
   .form-container, .loading, .success, .error {
