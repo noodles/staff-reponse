@@ -103,7 +103,7 @@ const staffName = ref('Staff Member')
 const phoneNumber = ref('')
 
 // API base URL - loaded from environment variable
-const baseUrl = import.meta.env.VITE_API_BASE_URL || 'https://registered-enjoy-suffered-vic.trycloudflare.com'
+const baseUrl = import.meta.env.VITE_API_BASE_URL
 
 // Methods
 const getStatusText = (status) => {

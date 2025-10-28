@@ -11,6 +11,11 @@ onMounted(() => {
   const pathParts = window.location.pathname.split('/').filter(part => part)
   shortcode.value = pathParts[0] || ''
   
+  // For testing purposes, if no shortcode, use a test one
+  if (!shortcode.value) {
+    shortcode.value = 'test123'
+  }
+  
   // Get response parameter from query string (e.g., ?y, ?l, ?n)
   const urlParams = new URLSearchParams(window.location.search)
   responseParam.value = urlParams.get('response') || ''
