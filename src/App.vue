@@ -1,28 +1,10 @@
 <script setup>
-import ResponseForm from './components/ResponseForm.vue'
-import { ref, onMounted } from 'vue'
-
-// Extract shortcode from URL path and response from query params
-const shortcode = ref('')
-const responseParam = ref('')
-
-onMounted(() => {
-  // Get shortcode from URL path (e.g., /abc123)
-  const pathParts = window.location.pathname.split('/').filter(part => part)
-  shortcode.value = pathParts[0] || ''
-  
-  // Get response parameter from query string (e.g., ?y, ?l, ?n)
-  const urlParams = new URLSearchParams(window.location.search)
-  responseParam.value = urlParams.get('response') || ''
-})
+// App component now uses router-view to render different pages
 </script>
 
 <template>
   <div id="app">
-    <ResponseForm 
-      :shortcode="shortcode"
-      :response-param="responseParam"
-    />
+    <router-view />
   </div>
 </template>
 
