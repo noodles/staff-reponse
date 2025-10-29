@@ -90,28 +90,28 @@
         <h2 class="gallery-title">Workflow</h2>
         <div class="gallery-container">
           <div class="gallery-item">
-            <img src="/screenshots/Screenshot_2025-10-29-09-36-18-50_96e020fb3e895033e343f0d48de338fd.jpg" alt="Staff SMS Extension Screenshot 1" class="gallery-image" />
+            <img src="/screenshots/staff_sms_pos_smart_grid_screen.png" alt="Shopify POS Smart Grid" class="gallery-image" />
           </div>
           <div class="gallery-item">
-            <img src="/screenshots/Screenshot_2025-10-29-09-36-36-95_96e020fb3e895033e343f0d48de338fd.jpg" alt="Staff SMS Extension Screenshot 2" class="gallery-image" />
+            <img src="/screenshots/staff_sms_staff_status_screen.png" alt="Staff Responses" class="gallery-image" />
           </div>
           <div class="gallery-item">
-            <img src="/screenshots/Screenshot_2025-10-29-09-37-11-56_96e020fb3e895033e343f0d48de338fd.jpg" alt="Staff SMS Extension Screenshot 3" class="gallery-image" />
+            <img src="/screenshots/staff_sms_send_sms_screen.png" alt="Send SMS to staff member" class="gallery-image" />
           </div>
           <div class="gallery-item">
-            <img src="/screenshots/Screenshot_2025-10-29-09-37-20-52_96e020fb3e895033e343f0d48de338fd.jpg" alt="Staff SMS Extension Screenshot 4" class="gallery-image" />
+            <img src="/screenshots/staff_sms_sms_sent_screen.png" alt="SMS Sent" class="gallery-image" />
           </div>
           <div class="gallery-item">
-            <img src="/screenshots/Screenshot_2025-10-29-09-37-28-98_96e020fb3e895033e343f0d48de338fd.jpg" alt="Staff SMS Extension Screenshot 5" class="gallery-image" />
+            <img src="/screenshots/staff_sms_sms_received.png" alt="SMS Message Received" class="gallery-image" />
           </div>
           <div class="gallery-item">
-            <img src="/screenshots/Screenshot_2025-10-29-09-38-29-56_40deb401b9ffe8e1df2f1cc5ba480b12.jpg" alt="Staff SMS Extension Screenshot 6" class="gallery-image" />
+            <img src="/screenshots/staff_sms_staff_response_screen.png" alt="Staff Response Form" class="gallery-image" />
           </div>
           <div class="gallery-item">
-            <img src="/screenshots/Screenshot_2025-10-29-09-38-38-74_40deb401b9ffe8e1df2f1cc5ba480b12.jpg" alt="Staff SMS Extension Screenshot 7" class="gallery-image" />
+            <img src="/screenshots/staff_sms_staff_response_confirmation_screen.png" alt="Staff Response Confirmation" class="gallery-image" />
           </div>
           <div class="gallery-item">
-            <img src="/screenshots/Screenshot_2025-10-29-09-39-45-44_96e020fb3e895033e343f0d48de338fd.jpg" alt="Staff SMS Extension Screenshot 8" class="gallery-image" />
+            <img src="/screenshots/staff_sms_staff_status_screen_updated.png" alt="Updated Staff Responses" class="gallery-image" />
           </div>
         </div>
       </div>
